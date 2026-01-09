@@ -252,6 +252,10 @@ function showSection(sectionId) {
     const activeSection = document.getElementById(sectionId);
     if (activeSection) {
         activeSection.classList.add('active');
+        // Smooth scroll to section (especially on mobile)
+        setTimeout(() => {
+            activeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 50);
     }
 
     // Add to navigation history
@@ -264,10 +268,17 @@ function showSection(sectionId) {
 
     // Update navigation buttons state
     updateNavigationButtons();
-    
-    // If showing a category, refresh its content
+
+    // If showing a category, refresh its content and check for poems
     if (sectionId !== 'home' && sectionId !== 'upload') {
         displayCategoryPoems();
+        // Check if the section has poems, else show popup
+        const poemsGrid = activeSection.querySelector('.poems-grid');
+        if (poemsGrid && poemsGrid.children.length === 0) {
+            setTimeout(() => {
+                alert('इस श्रेणी में अभी कोई कविता उपलब्ध नहीं है।');
+            }, 300);
+        }
     }
 }
 
