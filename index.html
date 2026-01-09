@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>शब्दसुमन – हिंदी काव्य एवं साहित्य मंच</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;600;700&family=Noto+Sans+Devanagari:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="site-title">🪷 शब्दसुमन</h1>
+                <p class="site-tagline">हिंदी काव्य एवं साहित्य मंच</p>
+            </div>
+            
+            <!-- Navigation Controls -->
+            <div class="nav-controls">
+                <button class="nav-control-btn" onclick="goBack()" title="पीछे जाएं">
+                    <span class="nav-icon">◀</span> पीछे
+                </button>
+                <button class="nav-control-btn" onclick="goForward()" title="आगे बढ़ें">
+                    आगे <span class="nav-icon">▶</span>
+                </button>
+                <button class="nav-control-btn home-btn" onclick="goToHome()" title="मुख्य पृष्ठ">
+                    🏠 मुख्य पृष्ठ
+                </button>
+                <button class="nav-control-btn admin-login-btn" id="adminLoginBtn" onclick="showAdminPanel()" title="व्यवस्थापक लॉगिन">
+                    🔐 Admin
+                </button>
+                <button class="nav-control-btn admin-logout-btn" id="adminLogoutBtn" onclick="logoutAdmin()" style="display: none;" title="लॉगआउट करें">
+                    🚪 Logout
+                </button>
+            </div>
+            
+            <nav class="main-nav">
+                <button class="nav-btn" onclick="showSection('home')">मुख्य पृष्ठ</button>
+                <button class="nav-btn" onclick="showSection('bhakti')">भक्ति काव्य</button>
+                <button class="nav-btn" onclick="showSection('shringar')">श्रृंगार काव्य</button>
+                <button class="nav-btn" onclick="showSection('veer')">वीर रस</button>
+                <button class="nav-btn" onclick="showSection('neeti')">नीति काव्य</button>
+                <button class="nav-btn" onclick="showSection('samajik')">सामाजिक काव्य</button>
+                <button class="nav-btn" onclick="showSection('bal')">बाल काव्य</button>
+                <button class="nav-btn" onclick="showSection('prerak')">प्रेरणादायक काव्य</button>
+                <button class="nav-btn admin-btn" id="adminUploadBtn" onclick="showSection('upload')" style="display: none;">अपलोड करें</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="कविता खोजें (शीर्षक, सामग्री, या श्रेणी)..." onkeyup="searchPoems()">
+                <button onclick="clearSearch()">साफ़ करें</button>
+            </div>
+
+            <!-- Home Section -->
+            <section id="home" class="content-section active">
+                <div class="welcome-banner">
+                    <h2>स्वागत है</h2>
+                    <p>यह मंच हिंदी काव्य और साहित्य के प्रेमियों के लिए समर्पित है। यहाँ आप विभिन्न प्रकार की कविताओं का आनंद ले सकते हैं।</p>
+                </div>
+                <div id="allPoemsContainer" class="poems-grid"></div>
+            </section>
+
+            <!-- Category Sections -->
+            <section id="bhakti" class="content-section">
+                <h2 class="section-title">भक्ति काव्य</h2>
+                <div class="poems-grid" data-category="bhakti"></div>
+            </section>
+
+            <section id="shringar" class="content-section">
+                <h2 class="section-title">श्रृंगार काव्य</h2>
+                <div class="poems-grid" data-category="shringar"></div>
+            </section>
+
+            <section id="veer" class="content-section">
+                <h2 class="section-title">वीर रस</h2>
+                <div class="poems-grid" data-category="veer"></div>
+            </section>
+
+            <section id="neeti" class="content-section">
+                <h2 class="section-title">नीति काव्य</h2>
+                <div class="poems-grid" data-category="neeti"></div>
+            </section>
+
+            <section id="samajik" class="content-section">
+                <h2 class="section-title">सामाजिक काव्य</h2>
+                <div class="poems-grid" data-category="samajik"></div>
+            </section>
+
+            <section id="bal" class="content-section">
+                <h2 class="section-title">बाल काव्य</h2>
+                <div class="poems-grid" data-category="bal"></div>
+            </section>
+
+            <section id="prerak" class="content-section">
+                <h2 class="section-title">प्रेरणादायक काव्य</h2>
+                <div class="poems-grid" data-category="prerak"></div>
+            </section>
+
+            <!-- Upload Section (Admin) -->
+            <section id="upload" class="content-section">
+                <div class="upload-panel">
+                    <h2 class="section-title">नई कविता अपलोड करें</h2>
+                    <form id="uploadForm" onsubmit="uploadPoem(event)">
+                        <div class="form-group">
+                            <label for="poemCategory">काव्य प्रकार *</label>
+                            <select id="poemCategory" required>
+                                <option value="">चुनें</option>
+                                <option value="bhakti">भक्ति काव्य</option>
+                                <option value="shringar">श्रृंगार काव्य</option>
+                                <option value="veer">वीर रस</option>
+                                <option value="neeti">नीति काव्य</option>
+                                <option value="samajik">सामाजिक काव्य</option>
+                                <option value="bal">बाल काव्य</option>
+                                <option value="prerak">प्रेरणादायक काव्य</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="poemTitle">कविता का शीर्षक *</label>
+                            <input type="text" id="poemTitle" required placeholder="उदाहरण: राम वंदना">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="poemText">कविता की सामग्री *</label>
+                            <textarea id="poemText" rows="10" required placeholder="यहाँ अपनी कविता लिखें..."></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-submit">सबमिट करें</button>
+                            <button type="button" class="btn-reset" onclick="resetForm()">रीसेट करें</button>
+                        </div>
+                    </form>
+                    <div id="uploadMessage" class="upload-message"></div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>© 2026 शब्दसुमन – हिंदी काव्य एवं साहित्य मंच</p>
+            <p>भारतीय संस्कृति और साहित्य को समर्पित</p>
+        </div>
+    </footer>
+
+    <!-- Admin Login Modal -->
+    <div id="adminModal" class="admin-modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeAdminModal()">&times;</span>
+            <h2>व्यवस्थापक लॉगिन</h2>
+            <div class="login-form">
+                <input type="password" id="adminPassword" placeholder="पासवर्ड दर्ज करें" onkeypress="if(event.key === 'Enter') checkAdminPassword()">
+                <button onclick="checkAdminPassword()">लॉगिन करें</button>
+                <p id="loginError" class="login-error"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

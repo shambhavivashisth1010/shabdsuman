@@ -1,0 +1,1033 @@
+/* ===================================
+   शब्दसुमन - हिंदी काव्य मंच
+   Enhanced Bhagwa/Hindu Cultural Theme
+   Inspired by Traditional Indian Design
+   =================================== */
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Bhagwa Color Palette */
+    --primary-saffron: #FF9933;
+    --deep-saffron: #FF6B35;
+    --light-saffron: #FFB366;
+    --golden: #FFCC66;
+    --cream: #FFF8E7;
+    --ivory: #FFFEF5;
+    --earth-brown: #8B4513;
+    --dark-brown: #5C3317;
+    --sacred-red: #DC143C;
+    --temple-gold: #D4AF37;
+    
+    /* Shadows & Effects */
+    --shadow-light: 0 2px 8px rgba(255, 102, 51, 0.15);
+    --shadow-medium: 0 4px 16px rgba(255, 102, 51, 0.2);
+    --shadow-heavy: 0 8px 24px rgba(255, 102, 51, 0.25);
+}
+
+body {
+    font-family: 'Noto Sans Devanagari', 'Hind', serif;
+    background: linear-gradient(to bottom, #FFF8E7 0%, #FFE8CC 50%, #FFD9A8 100%);
+    background-attachment: fixed;
+    color: var(--dark-brown);
+    line-height: 1.9;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Decorative Background Pattern */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255, 153, 51, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 107, 53, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* ===================================
+   HEADER STYLES - Traditional Design
+   =================================== */
+
+.site-header {
+    background: linear-gradient(135deg, #FF6B35 0%, #FF9933 50%, #FFCC66 100%);
+    box-shadow: 0 6px 20px rgba(255, 102, 51, 0.4);
+    padding: 30px 0 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 4px solid var(--temple-gold);
+}
+
+.header-content {
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+/* Decorative Elements */
+.header-content::before,
+.header-content::after {
+    content: '🕉️';
+    position: absolute;
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.6);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.header-content::before {
+    left: 10%;
+}
+
+.header-content::after {
+    right: 10%;
+}
+
+.site-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+    font-family: 'Hind', sans-serif;
+}
+
+/* ===================================
+   NAVIGATION CONTROLS
+   =================================== */
+
+.nav-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.nav-control-btn {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, rgba(255, 153, 51, 0.9) 0%, rgba(255, 107, 53, 0.9) 100%);
+    color: white;
+    border: 2px solid var(--temple-gold);
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 3px 10px rgba(255, 102, 51, 0.3);
+}
+
+.nav-control-btn:hover {
+    background: linear-gradient(135deg, var(--deep-saffron) 0%, var(--sacred-red) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 102, 51, 0.4);
+}
+
+.nav-control-btn:active {
+    transform: translateY(0);
+}
+
+.nav-control-btn:disabled {
+    background: linear-gradient(135deg, #ccc 0%, #999 100%);
+    cursor: not-allowed;
+    opacity: 0.5;
+    box-shadow: none;
+}
+
+.nav-control-btn.home-btn {
+    background: linear-gradient(135deg, var(--temple-gold) 0%, #FFD700 100%);
+    color: var(--deep-saffron);
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+.nav-control-btn.home-btn:hover {
+    background: linear-gradient(135deg, #FFD700 0%, var(--temple-gold) 100%);
+    color: var(--sacred-red);
+}
+
+.nav-control-btn.admin-login-btn {
+    background: linear-gradient(135deg, #FF6B35 0%, #DC143C 100%);
+    color: white;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: 2px solid #FFD700;
+}
+
+.nav-control-btn.admin-login-btn:hover {
+    background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%);
+    transform: translateY(-2px) scale(1.05);
+}
+
+.nav-control-btn.admin-logout-btn {
+    background: linear-gradient(135deg, #8B0000 0%, #660000 100%);
+    color: white;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: 2px solid #DC143C;
+}
+
+.nav-control-btn.admin-logout-btn:hover {
+    background: linear-gradient(135deg, #660000 0%, #330000 100%);
+    transform: translateY(-2px) scale(1.05);
+}
+
+.nav-icon {
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.site-tagline {
+    font-size: 1.3rem;
+    color: #FFFEF7;
+    font-weight: 400;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    letter-spacing: 1px;
+}
+
+/* Navigation */
+.main-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding: 0 20px;
+}
+
+.nav-btn {
+    background: linear-gradient(to bottom, #FFFFFF 0%, #FFF8E7 100%);
+    color: var(--deep-saffron);
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    padding: 12px 24px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 153, 51, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.nav-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.nav-btn:hover {
+    background: linear-gradient(to bottom, #FFFFFF 0%, #FFE8CC 100%);
+    border-color: var(--temple-gold);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(255, 102, 51, 0.3);
+    color: var(--earth-brown);
+}
+
+.admin-btn {
+    background: linear-gradient(135deg, var(--deep-saffron) 0%, var(--primary-saffron) 100%);
+    color: white;
+    border-color: var(--temple-gold);
+}
+
+.admin-btn:hover {
+    background: linear-gradient(135deg, var(--primary-saffron) 0%, var(--light-saffron) 100%);
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* ===================================
+   MAIN CONTENT - Elegant Layout
+   =================================== */
+
+.main-content {
+    padding: 50px 0;
+    min-height: calc(100vh - 350px);
+}
+
+/* Search Container - Enhanced Design */
+.search-container {
+    background: linear-gradient(to right, #FFFFFF 0%, #FFF8E7 100%);
+    padding: 25px 30px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-medium);
+    margin-bottom: 40px;
+    display: flex;
+    gap: 15px;
+    border: 3px solid var(--light-saffron);
+    position: relative;
+    overflow: hidden;
+}
+
+.search-container::before {
+    content: '🔍';
+    position: absolute;
+    font-size: 8rem;
+    opacity: 0.05;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#searchInput {
+    flex: 1;
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    border: 3px solid var(--primary-saffron);
+    border-radius: 50px;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: var(--deep-saffron);
+    box-shadow: 0 0 15px rgba(255, 153, 51, 0.3);
+    transform: scale(1.02);
+}
+
+.search-container button {
+    padding: 15px 35px;
+    background: linear-gradient(135deg, var(--primary-saffron) 0%, var(--deep-saffron) 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    box-shadow: 0 4px 12px rgba(255, 102, 51, 0.3);
+}
+
+.search-container button:hover {
+    background: linear-gradient(135deg, var(--deep-saffron) 0%, var(--sacred-red) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 102, 51, 0.4);
+}
+
+/* Content Sections */
+.content-section {
+    display: none;
+    animation: fadeIn 0.6s ease;
+}
+
+.content-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-title {
+    font-size: 2.8rem;
+    color: var(--deep-saffron);
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 15px;
+    border-bottom: 4px solid var(--temple-gold);
+    position: relative;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section-title::after {
+    content: '✦';
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--cream);
+    padding: 0 15px;
+    color: var(--temple-gold);
+    font-size: 1.5rem;
+}
+
+/* Welcome Banner - Temple-Inspired */
+.welcome-banner {
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFF8E7 50%, #FFE8CC 100%);
+    padding: 50px 60px;
+    border-radius: 25px;
+    box-shadow: var(--shadow-heavy);
+    text-align: center;
+    margin-bottom: 50px;
+    border: 4px solid var(--primary-saffron);
+    position: relative;
+    overflow: hidden;
+}
+
+.welcome-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(to right, 
+        var(--deep-saffron) 0%, 
+        var(--primary-saffron) 25%, 
+        var(--temple-gold) 50%, 
+        var(--primary-saffron) 75%, 
+        var(--deep-saffron) 100%);
+}
+
+.welcome-banner::after {
+    content: '🪷';
+    position: absolute;
+    font-size: 10rem;
+    opacity: 0.05;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-15deg);
+}
+
+.welcome-banner h2 {
+    font-size: 2.8rem;
+    color: var(--deep-saffron);
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-banner p {
+    font-size: 1.3rem;
+    color: var(--earth-brown);
+    line-height: 2;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ===================================
+   POEM CARDS - Beautiful Layout
+   =================================== */
+
+.poems-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 35px;
+}
+
+.poem-card {
+    background: linear-gradient(to bottom, #FFFFFF 0%, #FFF8E7 100%);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-medium);
+    transition: all 0.4s ease;
+    border: 3px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.poem-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+        var(--deep-saffron) 0%, 
+        var(--primary-saffron) 50%, 
+        var(--temple-gold) 100%);
+}
+
+.poem-card::after {
+    content: '❀';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 3rem;
+    color: var(--light-saffron);
+    opacity: 0.2;
+}
+
+.poem-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-heavy);
+    border-color: var(--primary-saffron);
+}
+
+.poem-category {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-saffron) 0%, var(--deep-saffron) 100%);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(255, 102, 51, 0.3);
+    letter-spacing: 0.5px;
+}
+
+.poem-title {
+    font-size: 1.8rem;
+    color: var(--deep-saffron);
+    margin-bottom: 20px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.poem-text {
+    font-size: 1.15rem;
+    color: var(--dark-brown);
+    line-height: 2.2;
+    white-space: pre-wrap;
+    margin-bottom: 20px;
+    max-height: 350px;
+    overflow-y: auto;
+    padding-right: 15px;
+    font-weight: 400;
+}
+
+.poem-text::-webkit-scrollbar {
+    width: 8px;
+}
+
+.poem-text::-webkit-scrollbar-track {
+    background: var(--cream);
+    border-radius: 10px;
+}
+
+.poem-text::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--primary-saffron), var(--deep-saffron));
+    border-radius: 10px;
+}
+
+.poem-text::-webkit-scrollbar-thumb:hover {
+    background: var(--deep-saffron);
+}
+
+.poem-audio {
+    margin-top: 20px;
+    padding: 15px;
+    background: var(--cream);
+    border-radius: 15px;
+    border: 2px solid var(--light-saffron);
+}
+
+.poem-audio audio {
+    width: 100%;
+    height: 45px;
+    filter: sepia(20%) saturate(150%) hue-rotate(10deg);
+}
+
+.no-poems {
+    text-align: center;
+    font-size: 1.3rem;
+    color: var(--earth-brown);
+    padding: 60px 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--shadow-light);
+}
+
+/* ===================================
+   UPLOAD PANEL - Admin Section
+   =================================== */
+
+.upload-panel {
+    background: linear-gradient(to bottom, #FFFFFF 0%, #FFF8E7 100%);
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: var(--shadow-heavy);
+    max-width: 800px;
+    margin: 0 auto;
+    border: 4px solid var(--primary-saffron);
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    color: var(--deep-saffron);
+    margin-bottom: 10px;
+    font-size: 1.15rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1.05rem;
+    border: 3px solid var(--light-saffron);
+    border-radius: 12px;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-saffron);
+    box-shadow: 0 0 15px rgba(255, 153, 51, 0.2);
+    transform: scale(1.01);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 180px;
+    line-height: 1.8;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 8px;
+    color: var(--earth-brown);
+    font-size: 0.9rem;
+}
+
+.form-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 35px;
+}
+
+.btn-submit,
+.btn-reset {
+    padding: 15px 50px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, var(--primary-saffron) 0%, var(--deep-saffron) 100%);
+    color: white;
+}
+
+.btn-submit:hover {
+    background: linear-gradient(135deg, var(--deep-saffron) 0%, var(--sacred-red) 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(255, 102, 51, 0.3);
+}
+
+.btn-reset {
+    background: linear-gradient(to bottom, #f5f5f5 0%, #e0e0e0 100%);
+    color: var(--earth-brown);
+}
+
+.btn-reset:hover {
+    background: linear-gradient(to bottom, #e0e0e0 0%, #d0d0d0 100%);
+    transform: translateY(-2px);
+}
+
+.upload-message {
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: none;
+}
+
+.upload-message.success {
+    background: linear-gradient(to right, #d4edda 0%, #c3e6cb 100%);
+    color: #155724;
+    border: 3px solid #28a745;
+    display: block;
+}
+
+.upload-message.error {
+    background: linear-gradient(to right, #f8d7da 0%, #f5c6cb 100%);
+    color: #721c24;
+    border: 3px solid #dc3545;
+    display: block;
+}
+
+/* ===================================
+   FOOTER - Traditional Design
+   =================================== */
+
+.site-footer {
+    background: linear-gradient(135deg, #FF6B35 0%, #FF9933 50%, #FFCC66 100%);
+    color: white;
+    text-align: center;
+    padding: 40px 30px;
+    margin-top: 60px;
+    box-shadow: 0 -4px 20px rgba(255, 102, 51, 0.3);
+    border-top: 4px solid var(--temple-gold);
+    position: relative;
+}
+
+.site-footer::before {
+    content: '࿘';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    opacity: 0.3;
+}
+
+.site-footer p {
+    margin: 8px 0;
+    font-size: 1.05rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.5px;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media (max-width: 1024px) {
+    .header-content::before,
+    .header-content::after {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-title {
+        font-size: 2.2rem;
+    }
+
+    .site-tagline {
+        font-size: 1rem;
+    }
+
+    .main-nav {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .nav-btn {
+        width: 100%;
+        border-radius: 15px;
+    }
+
+    .poems-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .search-container {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .upload-panel {
+        padding: 30px 25px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .btn-submit,
+    .btn-reset {
+        width: 100%;
+    }
+
+    .welcome-banner {
+        padding: 35px 25px;
+    }
+
+    .welcome-banner h2 {
+        font-size: 2rem;
+    }
+
+    .welcome-banner p {
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-title {
+        font-size: 1.8rem;
+    }
+
+    .poem-card {
+        padding: 20px;
+    }
+
+    .poem-title {
+        font-size: 1.4rem;
+    }
+}
+
+/* ===================================
+   PRINT STYLES
+   =================================== */
+
+@media print {
+    .site-header,
+    .search-container,
+    .site-footer,
+    .poem-audio,
+    .upload-panel {
+        display: none;
+    }
+
+    .poem-card {
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 2px solid var(--earth-brown);
+    }
+
+    body {
+        background: white;
+    }
+}
+
+/* ===================================
+   ADMIN MODAL - Login Panel
+   =================================== */
+
+.admin-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: linear-gradient(to bottom, #FFFFFF 0%, #FFF8E7 100%);
+    padding: 40px 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    max-width: 450px;
+    width: 90%;
+    position: relative;
+    border: 4px solid var(--primary-saffron);
+    animation: slideIn 0.4s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--deep-saffron);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+    color: var(--sacred-red);
+    transform: rotate(90deg);
+}
+
+.modal-content h2 {
+    text-align: center;
+    color: var(--deep-saffron);
+    font-size: 2rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-form input {
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    border: 3px solid var(--light-saffron);
+    border-radius: 12px;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.login-form input:focus {
+    outline: none;
+    border-color: var(--primary-saffron);
+    box-shadow: 0 0 15px rgba(255, 153, 51, 0.2);
+}
+
+.login-form button {
+    padding: 15px 30px;
+    background: linear-gradient(135deg, var(--primary-saffron) 0%, var(--deep-saffron) 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    box-shadow: 0 4px 12px rgba(255, 102, 51, 0.3);
+}
+
+.login-form button:hover {
+    background: linear-gradient(135deg, var(--deep-saffron) 0%, var(--sacred-red) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 102, 51, 0.4);
+}
+
+.login-error {
+    color: var(--sacred-red);
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-top: -10px;
+}
+
+/* ===================================
+   ACCESSIBILITY
+   =================================== */
+
+.nav-btn:focus,
+.nav-control-btn:focus,
+.search-container button:focus,
+.btn-submit:focus,
+.btn-reset:focus {
+    outline: 3px solid var(--temple-gold);
+    outline-offset: 3px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .poem-card {
+        border: 3px solid var(--earth-brown);
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media (max-width: 768px) {
+    .site-title {
+        font-size: 2rem;
+    }
+
+    .site-tagline {
+        font-size: 1rem;
+    }
+
+    .nav-controls {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .nav-control-btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+
+    .main-nav {
+        gap: 10px;
+    }
+
+    .nav-btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    .poem-card {
+        padding: 20px;
+    }
+
+    .upload-form input,
+    .upload-form select,
+    .upload-form textarea {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-controls {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-control-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
