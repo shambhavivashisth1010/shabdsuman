@@ -796,17 +796,117 @@ body::before {
     }
 }
 
-@media (max-width: 480px) {
+/* =============================
+   EXTRA MOBILE ENHANCEMENTS
+   ============================= */
+@media (max-width: 600px) {
+    body {
+        font-size: 1.05rem;
+        padding: 0;
+        overflow-x: hidden;
+    }
+    .container {
+        padding: 0 5px;
+        max-width: 100vw;
+    }
+    .site-header {
+        padding: 18px 0 10px;
+    }
+    .header-content {
+        margin-bottom: 10px;
+    }
     .site-title {
-        font-size: 1.8rem;
+        font-size: 1.3rem;
+        word-break: break-word;
     }
-
+    .site-tagline {
+        font-size: 0.95rem;
+    }
+    .nav-controls {
+        flex-direction: column;
+        gap: 7px;
+        padding: 7px 0;
+    }
+    .nav-control-btn, .nav-control-btn.home-btn, .nav-control-btn.admin-login-btn, .nav-control-btn.admin-logout-btn {
+        width: 100%;
+        font-size: 1.05rem;
+        padding: 12px 0;
+        min-height: 44px;
+        border-radius: 30px;
+    }
+    .main-nav {
+        flex-wrap: wrap;
+        gap: 6px;
+        padding: 0 2px;
+    }
+    .nav-btn {
+        width: 100%;
+        font-size: 1.05rem;
+        padding: 12px 0;
+        min-height: 44px;
+        border-radius: 30px;
+    }
+    .main-content {
+        padding: 18px 0 10px 0;
+    }
+    .search-container {
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px 8px;
+        border-radius: 12px;
+    }
+    #searchInput {
+        font-size: 1rem;
+        padding: 12px 10px;
+        border-radius: 30px;
+    }
+    .search-container button {
+        font-size: 1rem;
+        padding: 12px 0;
+        border-radius: 30px;
+    }
+    .welcome-banner {
+        padding: 18px 8px;
+        font-size: 1rem;
+        border-radius: 12px;
+    }
+    .section-title {
+        font-size: 1.3rem;
+        padding-bottom: 7px;
+        margin-bottom: 18px;
+    }
+    .poems-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
     .poem-card {
-        padding: 20px;
+        padding: 12px 8px;
+        border-radius: 12px;
+        font-size: 1rem;
     }
-
-    .poem-title {
-        font-size: 1.4rem;
+    .poem-category {
+        font-size: 0.95rem;
+        padding: 6px 10px;
+        border-radius: 20px;
+    }
+    .upload-panel {
+        padding: 10px 4px;
+        border-radius: 12px;
+    }
+    .upload-form input, .upload-form select, .upload-form textarea {
+        font-size: 1rem;
+        padding: 10px 8px;
+        border-radius: 10px;
+    }
+    .form-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .btn-submit, .btn-reset {
+        width: 100%;
+        font-size: 1.05rem;
+        padding: 12px 0;
+        border-radius: 30px;
     }
 }
 
@@ -1031,3 +1131,4 @@ body::before {
         justify-content: center;
     }
 }
+
