@@ -254,8 +254,19 @@ function showSection(sectionId) {
         activeSection.classList.add('active');
         // Smooth scroll to section (especially on mobile)
         setTimeout(() => {
-            activeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 50);
+            // Only scroll if not already in view
+            const rect = activeSection.getBoundingClientRect();
+            const isMobile = window.innerWidth <= 800;
+            if (isMobile) {
+                // Account for sticky header height
+                const header = document.querySelector('.site-header');
+                const headerHeight = header ? header.offsetHeight : 0;
+                const scrollTo = window.scrollY + rect.top - headerHeight - 8;
+                window.scrollTo({ top: scrollTo, behavior: 'smooth' });
+            } else {
+                activeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }, 80);
     }
 
     // Add to navigation history
